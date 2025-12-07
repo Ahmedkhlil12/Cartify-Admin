@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒 Order Management</title>
+  <link rel="stylesheet" href="order.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="../Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="../User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Store/Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item  active"><a class="nav-link" href="Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="top-bar">
+      <h1>Order Management</h1>
+      <button class="btn btn-add" onclick="openAddOrderModal()">➕ Add Order</button>
+    </div>
+    <div class="card">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Order Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+          <!-- Populated by JS from API -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Order Modal -->
+  <div id="addOrderModal" class="modal-backdrop">
+    <div class="modal-content">
+      <button class="close" onclick="closeAddOrderModal()"><i class="fas fa-times"></i></button>
+      <h2>Add Order</h2>
+      <form id="addOrderForm">
+        <div class="form-group">
+          <label for="orderName">Order Name</label>
+          <input type="text" id="orderName" required />
+        </div>
+        <div class="form-group">
+          <label for="orderCategory">Category</label>
+          <select id="orderCategory" required>
+            <option value="1">Electronics</option>
+            <option value="2">Fashion</option>
+           
+            <!-- Populated from API -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="orderDescription">Description</label>
+          <textarea id="orderDescription" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="orderImage">Image</label>
+          <input type="file" id="orderImage" accept="image/*" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Order</button>
+          <button type="button" class="btn btn-secondary" onclick="closeAddOrderModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js.js"></script>
+</body>
+</html>

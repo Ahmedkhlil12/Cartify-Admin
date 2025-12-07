@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { margin-bottom: 20px; color: #333; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        button { padding: 10px 20px; background: #059669; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        button:hover { background: #047857; }
+        button.cancel { background: #999; }
+        button.cancel:hover { background: #777; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f3f3f3; font-weight: bold; }
+        tr:hover { background: #f9f9f9; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal.open { display: flex; }
+        .modal-content { background: white; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 80vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { margin: 0; }
+        .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 15px 20px; background: #059669; color: white; border-radius: 4px; display: none; z-index: 2000; }
+        .toast.show { display: block; }
+        .toast.error { background: #dc2626; }
+        .actions-cell { display: flex; gap: 5px; }
+        .btn-edit, .btn-delete { padding: 6px 12px; font-size: 12px; }
+        .btn-edit { background: #3b82f6; }
+        .btn-edit:hover { background: #2563eb; }
+        .btn-delete { background: #ef4444; }
+        .btn-delete:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <h1>🏪 Store Management</h1>
+            <button id="addStoreBtn">➕ Add Store</button>
+        </div>
+
+        <table id="storeTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Merchant</th>
+                    <th>Store Name</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="storeTableBody">
+                <tr><td colspan="6" style="text-align: center; color: #999;">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for Add/Edit Store -->
+    <div class="modal" id="storeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Store</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="storeForm">
+                <div class="form-group">
+                    <label>Merchant ID *</label>
+                    <input type="text" id="merchantId" required>
+                </div>
+                <div class="form-group">
+                    <label>Store Name *</label>
+                    <input type="text" id="storeName" required>
+                </div>
+                <div class="form-group">
+                    <label>Inventory ID</label>
+                    <input type="number" id="inventoryId">
+                </div>
+                <div class="form-group">
+                    <label>Category ID</label>
+                    <input type="number" id="categoryId">
+                </div>
+                <div class="form-group">
+                    <label>Created By (ID)</label>
+                    <input type="number" id="createdBy">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit">Save Store</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="store-simple.js"></script>
+</body>
+</html>
