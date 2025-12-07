@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📦 Product Management</title>
+  <link rel="stylesheet" href="product.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+   <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="../Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="../User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Store/Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="top-bar">
+      <div>
+        <h1 id="page-title">Product Management</h1>
+        <p class="subtitle">Connected to https://localhost:7212</p>
+      </div>
+      <button class="btn btn-add" id="addProductBtn">➕ Add Product</button>
+    </div>
+    <div class="card">
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Store</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Deleted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTableBody">
+          <tr>
+            <td colspan="10" class="empty-row">Loading products…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 id="productModalTitle">Add Product</h2>
+        <button class="modal-close" type="button" id="closeProductModal" aria-label="Close modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </header>
+
+      <form id="productForm" autocomplete="off">
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Product ID</span>
+            <input type="number" id="ProductId" name="ProductId" placeholder="Auto" disabled>
+          </label>
+
+          <label class="form-field">
+            <span>Type ID</span>
+            <input type="number" id="TypeId" name="TypeId" required min="1">
+          </label>
+
+          <label class="form-field">
+            <span>Store ID</span>
+            <input type="number" id="UserStoreId" name="UserStoreId" required min="1">
+          </label>
+
+          <label class="form-field">
+            <span>Product Name</span>
+            <input type="text" id="ProductName" name="ProductName" required>
+          </label>
+
+          <label class="form-field form-field--wide">
+            <span>Product Description</span>
+            <textarea id="ProductDescription" name="ProductDescription" rows="3" required></textarea>
+          </label>
+
+
+        <footer class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelProductModal">Cancel</button>
+          <button type="submit" class="btn btn-save">Save Product</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <div id="productToast" class="toast" role="status" aria-live="polite"></div>
+  <script src="product.js" defer></script>
+</body>
+</html>

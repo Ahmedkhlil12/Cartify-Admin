@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📂 Category Managment</title>
+    <link rel="stylesheet" href="category.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="../Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="../User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Store/Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+    <div class="main">
+        <div class="top-bar">
+        <h1>Category Management</h1>
+        <button id="openAddCategory" class="btn btn-add">➕ Add Category</button>
+        </div>
+    <div class="card">
+        <table>
+        <thead>
+            <tr>
+            <th>Category ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="categoryTableBody">
+            <tr>
+            <td colspan="4" style="text-align:center;padding:20px;">Loading categories...</td>
+            </tr>
+        </tbody>
+        </div>
+        <!-- Add Category Modal -->
+        <div id="categoryModal" class="modal" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;">
+          <div class="modal-backdrop" id="modalBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);"></div>
+          <div class="modal-content" role="dialog" aria-modal="true" style="background:#fff;max-width:700px;width:90%;margin:auto;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.2);position:relative;padding:20px;z-index:1001;">
+            <h2 style="margin-top:0">Add Category</h2>
+            <form id="categoryForm">
+              <input type="hidden" id="CategoryId" name="CategoryId" />
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <div style="flex:1 1 48%;">
+                  <label>Category Name</label>
+                  <input type="text" id="CategoryName" name="CategoryName" required style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;" />
+                </div>
+                
+                <div style="flex:1 1 100%;">
+                  <label>Description</label>
+                  <textarea id="CategoryDescription" name="CategoryDescription" rows="3" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;"></textarea>
+                </div>
+               
+                
+               
+                
+               
+                <div style="flex:1 1 48%;">
+                  <label>Image</label>
+                  <input type="file" id="ImageFile" accept="image/*" />
+                  <input type="hidden" id="ImageUrl" name="ImageUrl" />
+                </div>
+                <div style="flex:1 1 100%;">
+                  <label>Types (select multiple)</label>
+                  <select id="TblTypes" name="TblTypes" multiple style="width:100%;Padding:8px;border:1px solid #ccc;border-radius:4px;height:80px;">
+                    <option value="1">Fashion</option>
+                    <option value="2">Electronics</option>
+                    <option value="3">Home & Garden</option>
+                    <option value="4">Health & Beauty</option>
+                    <option value="5">Sports & Outdoors</option>
+                    <option value="6">Toys & Hobbies</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
+                <button type="button" id="cancelCategory" class="btn">Cancel</button>
+                <button type="submit" id="saveCategory" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <script src="category.js"></script>
+</body>
+</html>
+</body>
+</html>

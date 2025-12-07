@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Management</title>
+  <link rel="stylesheet" href="store.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  
+ <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="../Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item "><a class="nav-link" href="../User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="top-bar">
+      <div>
+        <h1>Store Management</h1>
+       
+      </div>
+      <button class="btn btn-add" id="addStoreBtn">➕ Add Store</button>
+    </div>
+
+    <div class="card">
+      <table class="store-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Merchant</th>
+            <th>Store Name</th>
+            <th>Inventory</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Deleted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="storeTableBody">
+          <tr>
+            <td colspan="10" class="empty-row">Loading stores…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="storeModal">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 id="storeModalTitle">Add Store</h2>
+        <button class="modal-close" type="button" id="closeModalBtn" aria-label="Close modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </header>
+
+      <form id="storeForm" autocomplete="off">
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Store ID</span>
+            <input type="number" id="UserStoreId" name="UserStoreId" placeholder="Auto" disabled>
+          </label>
+
+          <label class="form-field">
+            <span>Merchant ID</span>
+            <input type="text" id="MerchantId" name="MerchantId" required>
+          </label>
+
+          <label class="form-field">
+            <span>Store Name</span>
+            <input type="text" id="StoreName" name="StoreName" required>
+          </label>
+
+          <label class="form-field">
+            <span>Inventory ID</span>
+            <input type="number" id="InventoryId" name="InventoryId" min="1">
+          </label>
+
+          <label class="form-field">
+            <span>Category ID</span>
+            <input type="number" id="CategoryId" name="CategoryId" min="1">
+          </label>
+
+          <label class="form-field switch-field">
+            <span>Status</span>
+            <div>
+              <input type="checkbox" id="IsDeleted" name="IsDeleted">
+              <label for="IsDeleted">Mark as deleted</label>
+            </div>
+          </label>
+
+          <label class="form-field">
+            <span>Created By</span>
+            <input type="number" id="CreatedBy" name="CreatedBy" min="1" required>
+          </label>
+
+          <label class="form-field">
+            <span>Created Date</span>
+            <input type="datetime-local" id="CreatedDate" name="CreatedDate" required>
+          </label>
+
+          <label class="form-field">
+            <span>Updated By</span>
+            <input type="number" id="UpdatedBy" name="UpdatedBy" min="1">
+          </label>
+
+          <label class="form-field">
+            <span>Updated Date</span>
+            <input type="datetime-local" id="UpdatedDate" name="UpdatedDate">
+          </label>
+
+          <label class="form-field">
+            <span>Deleted By</span>
+            <input type="number" id="DeletedBy" name="DeletedBy" min="1">
+          </label>
+
+          <label class="form-field">
+            <span>Deleted Date</span>
+            <input type="datetime-local" id="DeletedDate" name="DeletedDate">
+          </label>
+        </div>
+
+        <footer class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-save">Save Store</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <div id="storeToast" class="toast" role="status" aria-live="polite"></div>
+  <script src="store.js" defer></script>
+</body>
+</html>

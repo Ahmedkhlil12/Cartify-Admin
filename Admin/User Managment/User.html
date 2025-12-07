@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>👥 User Management </title>
+  <link rel="stylesheet" href="user.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+ 
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+        <a href="#" class="logo" style="text-decoration: none;">
+        
+        <span class="title">Cartify Admin</span>
+        </a>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="../Dashboard/dashboard.html"><i class="fas fa-gauge"></i><span>Dashboard</span></a></li>
+        <li class="nav-item  active"><a class="nav-link" href="../User Managment/User.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Store/Store.html"><i class="fas fa-store"></i><span>Store Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Product/Prodcut.html"><i class="fas fa-box-open"></i><span>Product Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Order/Order.html"><i class="fas fa-cart-shopping"></i><span>Order Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Category/Category.html"><i class="fas fa-folder-tree"></i><span>Category Management</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="../Reports/Reports.html"><i class="fas fa-chart-pie"></i><span>Reports & Analytics</span></a></li>
+      
+        <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-gear"></i><span>Settings</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="top-bar">
+      <div class="left">
+        <button id="sidebarToggle" class="icon-btn" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+        <h1>User Management</h1>
+      </div>
+      <div class="right">
+        <div class="actions">
+          <button class="btn btn-add"><i class="fas fa-user-plus"></i> Add User</button>
+        </div>
+        <div class="profile">
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Mobile</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="usersTableBody">
+        <!-- Populated by JS from API -->
+      </tbody>
+    </table>
+    </div>
+  </main>
+
+  <!-- Add/Edit User Modal -->
+  <div id="addUserModal" class="modal-backdrop">
+    <div class="modal-content">
+      <button class="close" onclick="closeAddUserModal()"><i class="fas fa-times"></i></button>
+      <h2>Add User</h2>
+      <form id="addUserForm">
+        <div class="form-group">
+          <label for="userName">Name</label>
+          <input type="text" id="userName" required />
+        </div>
+        <div class="form-group">
+          <label for="userEmail">Email</label>
+          <input type="email" id="userEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="userMobile">Mobile</label>
+          <input type="tel" id="userMobile" required />
+        </div>
+        <div class="form-group">
+          <label for="userRole">Role</label>
+          <select id="userRole" required>
+            <option value="">Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Seller">Seller</option>
+            <option value="User">User</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="userPassword">Password</label>
+          <input type="password" id="userPassword" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save User</button>
+          <button type="button" class="btn btn-secondary" onclick="closeAddUserModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View User Modal -->
+  <div id="userModal" class="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+
+      <div class="tabs">
+        <button class="tab-btn active"><i class="fas fa-id-card"></i> Personal Info</button>
+        <button class="tab-btn"><i class="fas fa-shield-halved"></i> Security</button>
+        <button class="tab-btn"><i class="fas fa-location-dot"></i> Addresses</button>
+      </div>
+
+      <div class="tab-content active">
+        <!-- Filled by JS -->
+      </div>
+      <div class="tab-content">
+        <!-- Filled by JS -->
+      </div>
+      <div class="tab-content">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js.js"></script>
+</body>
+</html>
