@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/Admin/index.html" },
+    { "source": "/(.*)", "destination": "/Admin/$1" }
+  ]
+}
